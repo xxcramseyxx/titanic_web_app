@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Titanic</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <style>
+      body {
+        background-image: url("{% static 'titanic.jpeg'%}");
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section id="heading">
+        <h1>Home Page</h1>
+        <button type="button" onClick="clicked()">Click Me</button>
+        <h2>Get your Titanic Predictions Here!</h2>
+        <p>Enter in the name and details of a passenger for the Titanic</p>
+        <p>We will predict is they survive!</p>
+      </section>
+
+      <section id="fill">
+        <form action="{% url 'result'%}">
+            {% csrf_token %}
+            <p>Passenger Class (1st,2nd,3rd)</p>
+            <input type="text" name="pclass" /> </br>
+            <p>Sex (0 for male, 1 for female)</p>
+            <input type="text" name="sex" /> </br>
+            <p>Age (in years)</p>
+            <input type="text" name="age" /> </br>
+            <p>Number of Siblings/Spouses Aboard</p>
+            <input type="text" name="sibsp" /> </br>
+            <p>Number of Parents/Children Abord</p>
+            <input type="text" name="parch" /> </br>
+            <p>British Pounds Paid For Fare</p>
+            <input type="text" name="fare" /> </br>
+            </br>
+            <p>Embarked</p>
+            <p>(0 = SouthHampton, 1 = Cherbourg, 2 = Queenstown)</p>
+            <input type="text" name="embarked" /> </br>
+            </br>
+            <p>Title (0 for Mr, 1 for Miss, 2 for Mrs, 3 for Master)</p>
+            <input type="text" name="title" /> </br>
+            <input type="submit" />
+        </form>
+      </section>
+    </div>
+    <script type="text/javascript" src="{% static 'main.js'%}"></script>
+  </body>
+
+ 
+</html>
